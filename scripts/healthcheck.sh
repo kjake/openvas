@@ -4,7 +4,6 @@ FUNC=$(cat /usr/local/etc/running-as)
 case  $FUNC in
 	openvas)
 		UUID=$( su -c "gvmd --get-scanners" gvm | awk /OpenVAS/'{print  $1}' )
-		su -c "gvmd --verify-scanner=$UUID" gvm | grep OpenVAS || exit 1
 	;;
 	gvmd)
 		#gvmd listens on 9390, but not http
